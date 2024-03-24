@@ -109,9 +109,9 @@ public class GameController : MonoBehaviour
     public void ReloadScene()
     {
         UpdateBestScore();
-        // Œ»İ‚ÌScene‚ğæ“¾
+        // ç¾åœ¨ã®Sceneã‚’å–å¾—
         Scene loadScene = SceneManager.GetActiveScene();
-        // Œ»İ‚ÌƒV[ƒ“‚ğÄ“Ç‚İ‚İ‚·‚é
+        // ç¾åœ¨ã®ã‚·ãƒ¼ãƒ³ã‚’å†èª­ã¿è¾¼ã¿ã™ã‚‹
         SceneManager.LoadScene(loadScene.name);
     }
 
@@ -151,7 +151,7 @@ public class GameController : MonoBehaviour
         switch (mode)
         {
             case 1:
-                mousePos.x = Mathf.Clamp(mousePos.x, -3.55f + holding.transform.localScale.x / 2, 3.55f - holding.transform.localScale.x / 2); // —‚Æ‚·‘ÎÛ‚É‡‚í‚¹‚½ˆÚ“®§ŒÀ
+                mousePos.x = Mathf.Clamp(mousePos.x, -3.55f + holding.transform.localScale.x / 2, 3.55f - holding.transform.localScale.x / 2); // è½ã¨ã™å¯¾è±¡ã«åˆã‚ã›ãŸç§»å‹•åˆ¶é™
                 break;
             default:
                 mousePos.x = Mathf.Clamp(mousePos.x, -2.85f, 2.85f);

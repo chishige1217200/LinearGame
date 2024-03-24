@@ -44,16 +44,16 @@ public class Train : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (this.rb.simulated) // —‰ºŒã‚Ì‚İ
+        if (this.rb.simulated) // è½ä¸‹å¾Œã®ã¿
         {
-            if (collision.gameObject.CompareTag("Train") && this.size == collision.gameObject.GetComponent<Train>().size) // “¯ƒTƒCƒY‚ÌÔ—¼‚Æ‚ÌÕ“Ë
+            if (collision.gameObject.CompareTag("Train") && this.size == collision.gameObject.GetComponent<Train>().size) // åŒã‚µã‚¤ã‚ºã®è»Šä¸¡ã¨ã®è¡çª
             {
                 GameController gc = GameObject.Find("GameController").GetComponent<GameController>();
-                if (this.size < 10) // ƒŠƒjƒAˆÈŠO
+                if (this.size < 10) // ãƒªãƒ‹ã‚¢ä»¥å¤–
                 {
-                    if (JudgeMerge(collision)) // ‡‘Ì‚µ‚Äˆê‚Â‘å‚«‚¢ƒTƒCƒY‚Ö
+                    if (JudgeMerge(collision)) // åˆä½“ã—ã¦ä¸€ã¤å¤§ãã„ã‚µã‚¤ã‚ºã¸
                     {
-                        // TODO:‡‘Ì‰¹‚ğ–Â‚ç‚·
+                        // TODO:åˆä½“éŸ³ã‚’é³´ã‚‰ã™
                         gc.PlayMergeSound();
                         gc.AddScore(this.size);
                         Instantiate(gc.trains[size + 1],
@@ -63,7 +63,7 @@ public class Train : MonoBehaviour
                     }
                     Destroy(this.gameObject);
                 }
-                else // ƒŠƒjƒA‚Ìê‡
+                else // ãƒªãƒ‹ã‚¢ã®å ´åˆ
                 {
                     if (JudgeMerge(collision))
                     {
@@ -85,22 +85,22 @@ public class Train : MonoBehaviour
     //    }
     //}
 
-    private bool JudgeMerge(Collision2D collision) // ‡‘Ì‚·‚é‚©Á–Å‚·‚é‚©‚ğ”»’è‚·‚é
+    private bool JudgeMerge(Collision2D collision) // åˆä½“ã™ã‚‹ã‹æ¶ˆæ»…ã™ã‚‹ã‹ã‚’åˆ¤å®šã™ã‚‹
     {
-        if (this.transform.position.y < collision.transform.position.y)// yÀ•W‚ª¬‚³‚¢
+        if (this.transform.position.y < collision.transform.position.y)// yåº§æ¨™ãŒå°ã•ã„æ™‚
         {
             return true;
         }
-        if (this.transform.position.y == collision.transform.position.y) // yÀ•W‚ª“¯‚¶
+        if (this.transform.position.y == collision.transform.position.y) // yåº§æ¨™ãŒåŒã˜æ™‚
         {
             Rigidbody2D opponent = collision.gameObject.GetComponent<Rigidbody2D>();
-            if (this.rb.velocity.magnitude < opponent.velocity.magnitude) // ‘¬“x‚ª¬‚³‚¢
+            if (this.rb.velocity.magnitude < opponent.velocity.magnitude) // é€Ÿåº¦ãŒå°ã•ã„æ™‚
             {
                 return true;
             }
-            if (this.rb.velocity.magnitude == opponent.velocity.magnitude) // ‘¬“x‚ª“¯‚¶
+            if (this.rb.velocity.magnitude == opponent.velocity.magnitude) // é€Ÿåº¦ãŒåŒã˜æ™‚
             {
-                if (Mathf.Abs(this.transform.position.x) > Mathf.Abs(collision.transform.position.x)) // xÀ•W‚Ìâ‘Î’l‚ª‘å‚«‚¢
+                if (Mathf.Abs(this.transform.position.x) > Mathf.Abs(collision.transform.position.x)) // xåº§æ¨™ã®çµ¶å¯¾å€¤ãŒå¤§ãã„æ™‚
                 {
                     return true;
                 }
